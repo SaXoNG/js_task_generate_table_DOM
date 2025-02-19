@@ -357,4 +357,26 @@ const people = [
 // eslint-disable-next-line no-console
 console.log(people); // you can remove it
 
-// write your code here
+for (const person of people) {
+  const createdTr = document.createElement('tr');
+  const { sex, born, died } = person;
+  const tableRowData = {
+    name: person.name,
+    gender: sex,
+    born,
+    died,
+    age: died - born,
+    century: Math.ceil(died / 100),
+  };
+
+  const personData = Object.values(tableRowData);
+
+  for (let i = 0; i < personData.length; i++) {
+    const createdTh = document.createElement('th');
+
+    createdTh.textContent = personData[i];
+    createdTr.append(createdTh);
+  }
+
+  document.querySelector('tbody').append(createdTr);
+}
