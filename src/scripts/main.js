@@ -354,9 +354,6 @@ const people = [
   },
 ];
 
-// eslint-disable-next-line no-console
-console.log(people); // you can remove it
-
 for (const person of people) {
   const createdTr = document.createElement('tr');
   const { sex, born, died } = person;
@@ -368,6 +365,12 @@ for (const person of people) {
     age: died - born,
     century: Math.ceil(died / 100),
   };
+
+  if (sex === 'm') {
+    tableRowData.gender = 'Male';
+  } else {
+    tableRowData.gender = 'Female';
+  }
 
   const personData = Object.values(tableRowData);
 
